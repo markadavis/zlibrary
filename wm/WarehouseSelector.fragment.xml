@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core" >
+	<!--
+		stretch="{= ${Device>/system/phone} ? true : false}"
+	-->
+	<Dialog
+		id="masterChgWhse"
+		title="{i18n>MasterChgWhse_Title}"
+		afterOpen="onMasterChgWhseBeforeOpen"
+		afterClose="onMasterChgWhsesAfterClose" >
+		<content>
+			<List id="masterChgWhse_list"
+				items="{ 
+					path: '/',
+					sorter:{
+						path: 'WarehouseText',
+						descending: false
+					}
+				}"
+				mode="SingleSelectMaster"
+				noDataText="{i18n>MasterChgWhse_NoDataText}"
+				selectionChange="onChangeWarehouseItemSelect" >
+				<items>
+					<StandardListItem id="masterGhcMhse_ListItem"
+						info="{WarehouseNumber}"
+						title="{WarehouseText}" />
+				</items>
+			</List>
+		</content>
+		<buttons>
+			<Button id="masterChgWhse_BtnChoose"
+				text="{i18n>MasterChgWhse_BtnChoose}"
+				enabled="false"
+				press="onChangeWarehouseChoose" />
+			<Button
+				text="{i18n>MasterChgWhse_BtnCancel}"
+				press="onChangeWarehouseCancel" />
+		</buttons>
+
+	</Dialog>
+</core:FragmentDefinition>
